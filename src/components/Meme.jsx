@@ -27,6 +27,12 @@ export default function Meme() {
         
     }
     
+    // The handleFocus function sets activeTextField based on which input field is focused. This allows the user to switch back and forth between "topText" and "bottomText" and adjust their positions using the buttons, regardless of whether the text content is changed.onFocus={handleFocus} is added to both input fields.
+    function handleFocus(event) {
+        const { name } = event.target;
+        setActiveTextField(name);
+    }
+    
     function handleChange(event) {
         const {name, value} = event.target
         setMeme(prevMeme => ({
@@ -43,16 +49,16 @@ export default function Meme() {
             // Adjust position based on direction
             switch (direction) {
                 case 'up':
-                    position.y -= 30;
+                    position.y -= 5;
                     break;
                 case 'down':
-                    position.y += 30;
+                    position.y += 5;
                     break;
                 case 'left':
-                    position.x -= 30;
+                    position.x -= 10;
                     break;
                 case 'right':
-                    position.x += 30;
+                    position.x += 10;
                     break;
                 default:
                     break;
@@ -71,6 +77,7 @@ export default function Meme() {
                     name="topText"
                     value={meme.topText}
                     onChange={handleChange}
+                    onFocus={handleFocus}  // Added focus handler
                 />
                 <input 
                     type="text"
@@ -79,6 +86,7 @@ export default function Meme() {
                     name="bottomText"
                     value={meme.bottomText}
                     onChange={handleChange}
+                    onFocus={handleFocus}  // Added focus handler
                 />
                 <button 
                     className="form--button"
@@ -90,10 +98,10 @@ export default function Meme() {
 
             {/* Buttons to move text */}
             <div className="button-group">
-                <button onClick={() => moveText('up')}>Move Text Up</button>
-                <button onClick={() => moveText('down')}>Move Text Down</button>
-                <button onClick={() => moveText('left')}>Move Text Left</button>
-                <button onClick={() => moveText('right')}>Move Text Right</button>
+                <button onClick={() => moveText('left')}>Left</button>
+                <button onClick={() => moveText('up')}>Up</button>
+                <button onClick={() => moveText('down')}>Down</button>
+                <button onClick={() => moveText('right')}>Right</button>
             </div>
             <div className="meme">
                 <img src={meme.randomImage} className="meme--image" />
