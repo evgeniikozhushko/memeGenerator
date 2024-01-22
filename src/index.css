@@ -24,6 +24,7 @@ main {
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Adjusts space between items */
   height: 80px;
   /* background: linear-gradient(60deg, #575757 1.18%, #898989 100%);
   color: white; */
@@ -206,14 +207,15 @@ form,
 @media (max-width: 768px) {
   /* Adjust layout for tablet and mobile screens */
   .header {
-      flex-direction: column;
-      height: auto;
+      /* flex-direction: column;
+      height: auto; */
+      justify-content: flex-end;
   }
 
   .header--image {
-    width: auto; /* Adjust as needed */
-    height: 60px; /* Example height, adjust as needed */
-    margin-bottom: 10px;
+    /* width: auto; Adjust as needed */
+    /* height: 60px; Example height, adjust as needed */
+    /* margin-bottom: 10px; */
 }
 
   .header--title {
@@ -235,16 +237,26 @@ form,
 
 @media (max-width: 480px) {
   /* Further adjustments for smaller mobile screens */
+
+  .header {
+    /* flex-direction: column; */
+    height: auto;
+    justify-content: flex-end;
+}
+
   .header--title {
       font-size: 0.8rem;
   }
 
   a {
     width: auto; /* Adjust as needed */
-    height: 60px; /* Example height, adjust as needed */
-    margin-bottom: 10px;
+    height: 30px;
+    margin-left: 10px;
   }
 
+  main {
+    padding: 30px 20px 0 20px;
+  }
   .form--button,
   .form--input {
       font-size: 0.8rem;
