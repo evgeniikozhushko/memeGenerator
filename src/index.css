@@ -171,9 +171,26 @@ form,
   top: 0;
 }
 
+.footer-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between;
+}
+
+.download-button {
+  margin: 20px 0 20px 0;
+  padding: 5px 40px 5px 40px;
+  background: #000000;
+  color: white;
+  border: 1px solid #D5D4D8;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 .credits {
-  color: #ffffff;
-  margin: 20px 20px 20px 0;
+  /* justify-content: flex-end; */
+  color: #979797;
+  margin: 20px 0 20px 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
 }

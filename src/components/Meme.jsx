@@ -66,6 +66,37 @@ export default function Meme() {
             return { ...prevMeme, [positionKey]: position };
         });
     }
+
+    function handleDownloadMeme() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const image = new Image();
+    
+        // Set canvas size to match the image
+        canvas.width = memeImageWidth; // Width of your meme image
+        canvas.height = memeImageHeight; // Height of your meme image
+    
+        image.onload = () => {
+            // Draw the image on canvas
+            ctx.drawImage(image, 0, 0);
+    
+            // Add top text
+            ctx.fillText(meme.topText, canvas.width / 2, 50); // Adjust positioning and styling as needed
+    
+            // Add bottom text
+            ctx.fillText(meme.bottomText, canvas.width / 2, canvas.height - 50); // Adjust positioning and styling as needed
+    
+            // Trigger download
+            const imageURL = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageURL;
+            downloadLink.download = 'meme.png';
+            downloadLink.click();
+        };
+    
+        image.src = meme.randomImage; // Set the source to the meme image
+    }
+    
     
     return (
         <main>
@@ -122,9 +153,13 @@ export default function Meme() {
                 >{meme.bottomText}
                 </h2>
             </div>
-            <a href="https://evgenii.ca/" target="_blank" rel="noreferrer"  className="header--image-link">
-                <h6 className="credits">evgenii.ca</h6>
-            </a>
+            <div className="footer-container">
+                <button className="download-button" onClick={handleDownloadMeme}>Download Meme</button>
+                <a href="https://evgenii.ca/" target="_blank" rel="noreferrer"  className="header--image-link">
+                    <h6 className="credits">evgenii.ca</h6>
+                </a>
+            </div>
+            
         </main>
     )
 }
