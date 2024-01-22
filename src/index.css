@@ -79,7 +79,11 @@ a {
 }
 
 .meme {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   position: relative;
+  /* Set a specific height or leave it to content height */
 }
 
 .meme--image {

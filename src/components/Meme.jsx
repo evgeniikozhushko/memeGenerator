@@ -5,10 +5,11 @@ export default function Meme() {
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg",
-        topTextPosition: { x: 0, y: 0 },
-        bottomTextPosition: { x: 0, y: 0 } 
+        topTextPosition: { x: 50, y: 10 }, // Centered and near the top
+        bottomTextPosition: { x: 50, y: 90 } // Centered and near the bottom
     })
     const [allMemes, setAllMemes] = React.useState([])
+    const [activeTextField, setActiveTextField] = React.useState('topText');
     
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
@@ -32,11 +33,14 @@ export default function Meme() {
             ...prevMeme,
             [name]: value
         }))
+        setActiveTextField(name); // Set active text field
     }
-    
-    function moveText(textName, direction) {
+
+    function moveText(direction) {
+        const positionKey = activeTextField + 'Position';
         setMeme(prevMeme => {
-            let position = { ...prevMeme[textName + 'Position'] };
+            let position = { ...prevMeme[positionKey] };
+            // Adjust position based on direction
             switch (direction) {
                 case 'up':
                     position.y -= 30;
@@ -53,10 +57,10 @@ export default function Meme() {
                 default:
                     break;
             }
-            return { ...prevMeme, [textName + 'Position']: position };
+            return { ...prevMeme, [positionKey]: position };
         });
     }
-
+    
     return (
         <main>
             <div className="form">
@@ -83,28 +87,30 @@ export default function Meme() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            {/* Buttons to move top text */}
-        <div className="button-group">
-            <button onClick={() => moveText('topText', 'up')}>Move Top Text Up</button>
-            <button onClick={() => moveText('topText', 'down')}>Move Top Text Down</button>
-            <button onClick={() => moveText('topText', 'left')}>Move Top Text Left</button>
-            <button onClick={() => moveText('topText', 'right')}>Move Top Text Right</button>
-        </div>
-        {/* Buttons to move bottom text */}
-        <div className="button-group">
-            <button onClick={() => moveText('bottomText', 'up')}>Move Bottom Text Up</button>
-            <button onClick={() => moveText('bottomText', 'down')}>Move Bottom Text Down</button>
-            <button onClick={() => moveText('bottomText', 'left')}>Move Bottom Text Left</button>
-            <button onClick={() => moveText('bottomText', 'right')}>Move Bottom Text Right</button>
-        </div>
+
+            {/* Buttons to move text */}
+            <div className="button-group">
+                <button onClick={() => moveText('up')}>Move Text Up</button>
+                <button onClick={() => moveText('down')}>Move Text Down</button>
+                <button onClick={() => moveText('left')}>Move Text Left</button>
+                <button onClick={() => moveText('right')}>Move Text Right</button>
+            </div>
             <div className="meme">
                 <img src={meme.randomImage} className="meme--image" />
                 <h2
                 className="meme--text top"
-                style={{ top: meme.topTextPosition.y + 'px', left: meme.topTextPosition.x + 'px' }}>{meme.topText}</h2>
+                style={{ 
+                    top: `${meme.topTextPosition.y}%`, 
+                    left: `${meme.topTextPosition.x}%`,
+                    transform: 'translate(-50%, -50%)'
+                }}>{meme.topText}</h2>
                 <h2
                     className="meme--text bottom"
-                    style={{ top: meme.bottomTextPosition.y + 'px', left: meme.bottomTextPosition.x + 'px' }}
+                    style={{
+                        top: `${meme.bottomTextPosition.y}%`, 
+                        left: `${meme.bottomTextPosition.x}%`,
+                        transform: 'translate(-50%, -50%)'
+                    }}
                 >{meme.bottomText}
                 </h2>
             </div>
