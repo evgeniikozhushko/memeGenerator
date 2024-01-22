@@ -49,16 +49,16 @@ export default function Meme() {
             // Adjust position based on direction
             switch (direction) {
                 case 'up':
-                    position.y -= 5;
+                    position.y -= 3;
                     break;
                 case 'down':
-                    position.y += 5;
+                    position.y += 3;
                     break;
                 case 'left':
-                    position.x -= 10;
+                    position.x -= 3;
                     break;
                 case 'right':
-                    position.x += 10;
+                    position.x += 3;
                     break;
                 default:
                     break;
@@ -122,6 +122,9 @@ export default function Meme() {
                 >{meme.bottomText}
                 </h2>
             </div>
+            <a href="https://evgenii.ca/" target="_blank" rel="noreferrer"  className="header--image-link">
+                <h6 className="credits">evgenii.ca</h6>
+            </a>
         </main>
     )
 }

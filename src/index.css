@@ -13,11 +13,11 @@ body {
 }
 
 main {
-  padding: 36px;
+  padding: 36px 36px 6px 36px;
   max-width: 100%;
   margin: auto;
   /* background-color: #000; */
-  border: 2px solid #575757;
+  border: 1px solid #ffffff;
   border-radius: 0 0 10px 10px;
 }
 
@@ -25,8 +25,12 @@ main {
   display: flex;
   align-items: center;
   height: 80px;
-  background: linear-gradient(60deg, #575757 1.18%, #898989 100%);
+  /* background: linear-gradient(60deg, #575757 1.18%, #898989 100%);
+  color: white; */
+  background: #000000;
   color: white;
+  border: 1px solid #ffffff;
+  border-bottom: none;
   padding: 20px;
   border-radius: 10px 10px 0 0;
 }
@@ -46,6 +50,7 @@ a {
   margin-right: auto;
   margin-left: 20px;
   font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .header--project {
@@ -71,9 +76,12 @@ a {
   grid-column: 1 / -1;
   font-family: "Karla", sans-serif;
   border-radius: 5px;
-  background: linear-gradient(80deg, #aaaaaa 1.18%, #5e5e5e 100%);
+  /* background: linear-gradient(80deg, #aaaaaa 1.18%, #5e5e5e 100%); */
+  /* color: white; */
+  /* border: none; */
+  background: #000000;
   color: white;
-  border: none;
+  border: 1px solid #D5D4D8;
   cursor: pointer;
   /* padding: 0 10px 0 10px; */
 }
@@ -87,12 +95,15 @@ form,
 
 .button-group button {
   flex-grow: 1; /* Allows buttons to grow and take up equal space */
-  margin: 0 5px; /* Adds margin to the left and right of each button */
+  margin: 0 10px; /* Adds margin to the left and right of each button */
   padding: 5px 0 5px 0;
-  background: linear-gradient(60deg, #9f9f9f 1.18%, #5e5e5e 100%);
+  /* background: linear-gradient(60deg, #9f9f9f 1.18%, #5e5e5e 100%); */
+  background: #000000;
   color: white;
-  border: none;
+  border: 1px solid #D5D4D8;
+  /* border: none; */
   cursor: pointer;
+  border-radius: 5px;
 }
 
 /* Remove left margin from the first button */
@@ -121,6 +132,9 @@ form,
   min-width: 500px; /* Adjust this value as needed */
   object-fit: contain; /* This will ensure the image is scaled properly */
   border-radius: 5px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .meme--text {
@@ -154,6 +168,13 @@ form,
 
 .top {
   top: 0;
+}
+
+.credits {
+  color: #ffffff;
+  margin: 20px 20px 20px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Media Queries */
