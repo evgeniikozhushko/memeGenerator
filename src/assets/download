@@ -1,0 +1,46 @@
+function handleDownloadMeme() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const image = new Image();
+    
+        image.onload = () => {
+            canvas.width = image.naturalWidth;
+            canvas.height = image.naturalHeight;
+            ctx.drawImage(image, 0, 0);
+    
+            // Text styling
+            const fontSize = Math.floor(canvas.width / 20); // Dynamic font size based on image width
+            ctx.font = `${fontSize}px Impact`; // Set the font style and size
+            ctx.fillStyle = 'white'; // Text color
+            ctx.strokeStyle = 'black'; // Text stroke color
+            ctx.lineWidth = Math.floor(fontSize / 15); // Text stroke width
+            ctx.textAlign = 'center'; // Align text to center
+            ctx.textBaseline = 'top'; // Align text from the top
+    
+            // Calculate text positions based on the percentage positions in the state
+            const topTextY = (meme.topTextPosition.y / 100) * canvas.height;
+            const bottomTextY = (meme.bottomTextPosition.y / 100) * canvas.height;
+    
+            // Convert text to uppercase
+            const topText = meme.topText.toUpperCase();
+            const bottomText = meme.bottomText.toUpperCase();
+    
+            // Draw top text
+            ctx.fillText(topText, canvas.width / 2, topTextY);
+            ctx.strokeText(topText, canvas.width / 2, topTextY);
+    
+            // Draw bottom text
+            ctx.fillText(bottomText, canvas.width / 2, bottomTextY);
+            ctx.strokeText(bottomText, canvas.width / 2, bottomTextY);
+    
+            // Trigger download
+            const imageURL = canvas.toDataURL('image/png');
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageURL;
+            downloadLink.download = 'meme.png';
+            downloadLink.click();
+        };
+    
+        image.src = meme.randomImage;
+        image.crossOrigin = 'anonymous';
+    }  
