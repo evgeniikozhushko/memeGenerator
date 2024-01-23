@@ -69,8 +69,10 @@ a {
 .form--input {
   font-family: "Karla", sans-serif;
   border-radius: 5px;
-  border: 1px solid #D5D4D8;
   text-indent: 10px;
+  background: #000000;
+  color: white;
+  border: 1px solid #D5D4D8;
 }
 
 .form--button {
@@ -207,6 +209,9 @@ form,
 
   .form--input {
       border: none; /* Removes the border for the input fields for screens smaller than 1024px */
+      background: #000000;
+      color: white;
+      border: 1px solid #D5D4D8;
   }
 
   .header {
