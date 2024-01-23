@@ -56,6 +56,8 @@ Contributions to the Meme Generator are welcome! Please read our contribution gu
 
 This README.md provides a comprehensive overview of your Meme Generator project. You can modify it as needed to better fit your project's specifics and repository structure.
 
-Thank you for checjing out my Meme Generator!
+Thank you for checking out my Meme Generator!
+
+[Meme Generator](src/assets/MemeGen.png)
 
 [evgenii.ca](https://evgenii.ca/)
