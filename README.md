@@ -59,5 +59,6 @@ This README.md provides a comprehensive overview of your Meme Generator project.
 Thank you for checking out my Meme Generator!
 
 [Meme Generator](src/assets/MemeGen.png)
+<img src="src/assets/MemeGen.png" alt="meme generator UI" width="128"/>
 
 [evgenii.ca](https://evgenii.ca/)
